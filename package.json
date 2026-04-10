@@ -1,19 +1,19 @@
 {
-  "name": "ww-blogs",
+  "name": "wingLittleBox",
   "type": "module",
   "private": true,
   "version": "1.0.0",
   "packageManager": "pnpm@9.6.7",
-  "description": "Development related blogs",
+  "description": "Personal blog and knowledge base powered by VitePress",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wangwenyin/ww-blogs.git"
+    "url": "git+https://github.com/wangwenyin/wingLittleBox.git"
   },
   "bugs": {
-    "url": "https://github.com/wangwenyin/ww-blogs/issues"
+    "url": "https://github.com/wangwenyin/wingLittleBox/issues"
   },
   "license": "MIT",
-  "homepage": "https://github.com/wangwenyin/ww-blogs#readme",
+  "homepage": "https://github.com/wangwenyin/wingLittleBox#readme",
   "author": "wangwenyin <1440233707@qq.com>",
   "devDependencies": {
     "vitepress": "^1.4.1"
