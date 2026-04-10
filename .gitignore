@@ -1,0 +1,22 @@
+node_modules/
+
+# VitePress build output and cache
+docs/.vitepress/cache/
+docs/.vitepress/dist/
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment files
+.env
+.env.*
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

@@ -1,0 +1,26 @@
+{
+  "name": "ww-blogs",
+  "type": "module",
+  "private": true,
+  "version": "1.0.0",
+  "packageManager": "pnpm@9.6.7",
+  "description": "Development related blogs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wangwenyin/ww-blogs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wangwenyin/ww-blogs/issues"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/wangwenyin/ww-blogs#readme",
+  "author": "wangwenyin <1440233707@qq.com>",
+  "devDependencies": {
+    "vitepress": "^1.4.1"
+  },
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  }
+}
