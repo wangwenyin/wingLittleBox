@@ -16,7 +16,7 @@
   "homepage": "https://github.com/wangwenyin/wingLittleBox#readme",
   "author": "wangwenyin <1440233707@qq.com>",
   "devDependencies": {
-    "vitepress": "^1.4.1"
+    "vitepress": "^1.6.4"
   },
   "scripts": {
     "docs:dev": "vitepress dev docs",

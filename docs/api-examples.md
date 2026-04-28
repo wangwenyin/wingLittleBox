@@ -2,48 +2,71 @@
 outline: deep
 ---
 
-# Runtime API Examples
+# 站点维护说明
 
-This page demonstrates usage of some of the runtime APIs provided by VitePress.
+这页不再保留 VitePress 默认的 API 示例，而是作为当前站点的维护说明页使用，方便后续继续扩展时快速回忆项目结构和约定。
 
-The main `useData()` API can be used to access site, theme, and page data for the current page. It works in both `.md` and `.vue` files:
+## 这个站点的定位
 
-```md
-<script setup>
-import { useData } from 'vitepress'
+当前站点主要承担三类内容：
 
-const { theme, page, frontmatter } = useData()
-</script>
+- 前端基础与工程化整理
+- Vue 相关源码阅读
+- 效率工具、工作流与日常技术记录
 
-## Results
+它不是产品官网，也不是组件文档，更适合持续沉淀长期有效的知识内容。
 
-### Theme Data
-<pre>{{ theme }}</pre>
+## 内容目录约定
 
-### Page Data
-<pre>{{ page }}</pre>
+目前主要内容分布如下：
 
-### Page Frontmatter
-<pre>{{ frontmatter }}</pre>
-```
+- `docs/fe/`：前端物语
+- `docs/analysis/`：源码阅读
+- `docs/efficiency/`：提效工具
+- `docs/pit/`：踩坑记录
+- `docs/daily-notes/`：日常笔记
 
-<script setup>
-import { useData } from 'vitepress'
+新增内容时，优先考虑是否应该落在现有栏目中，而不是继续平铺新的一级目录。
 
-const { site, theme, page, frontmatter } = useData()
-</script>
+## 配置入口
 
-## Results
+站点关键配置位于：
 
-### Theme Data
-<pre>{{ theme }}</pre>
+- `docs/.vitepress/config.ts`
+- `docs/.vitepress/configs/nav.ts`
+- `docs/.vitepress/theme/`
 
-### Page Data
-<pre>{{ page }}</pre>
+如果后续要继续优化阅读体验，优先改这里，而不是在单篇文章里零散堆样式。
 
-### Page Frontmatter
-<pre>{{ frontmatter }}</pre>
+## 内容维护建议
 
-## More
+### 先保证栏目结构稳定
 
-Check out the documentation for the [full list of runtime APIs](https://vitepress.dev/reference/runtime-api#usedata).
+在继续新增文章前，先维持栏目边界清晰：
+
+- 基础知识放 `fe`
+- 机制拆解放 `analysis`
+- 工具与工作流放 `efficiency`
+- 临时问题复盘放 `pit`
+
+### 优先写“长期有效”的内容
+
+更值得沉淀的是：
+
+- 原理解释
+- 取舍经验
+- 问题排查路径
+- 可复用的工作流
+
+而不是只记录一次性的碎片信息。
+
+### 避免默认示例再次残留
+
+后续如果初始化新页面，建议直接按当前站点风格落内容，不再保留框架默认模板页。
+
+## 后续可继续完善的方向
+
+- 为每个栏目补专题索引页
+- 增加更细的侧边栏分组
+- 给长文补“阅读时间 / 关键词 / 延伸阅读”
+- 增加部署说明和更新记录页

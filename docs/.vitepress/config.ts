@@ -2,13 +2,13 @@ import { defineConfig } from 'vitepress'
 import { nav } from './configs'
 
 export default defineConfig({
-  title: "wing的小盒子",
-  description: "记录前端成长、源码阅读、效率工具与生活观察",
+  title: 'wing的小盒子',
+  description: '记录前端成长、源码阅读、效率工具与生活观察',
   lastUpdated: true,
   cleanUrls: true,
   head: [
     ['meta', { name: 'msapplication-TileImage', content: '/favicon.ico' }],
-    ['link', { rel: 'icon', href: '/favicon.ico'}]
+    ['link', { rel: 'icon', href: '/favicon.ico' }]
   ],
   themeConfig: {
     logo: '/logo.png',
@@ -20,16 +20,89 @@ export default defineConfig({
     darkModeSwitchTitle: '切换到深色模式',
     nav,
 
-    sidebar: [
-      {
-        text: '快速开始',
-        items: [
-          { text: '首页', link: '/' },
-          { text: 'Vue 源码阅读', link: '/analysis/vue/1' },
-          { text: 'Windows 平台', link: '/efficiency/software/windows' }
-        ]
-      }
-    ],
+    sidebar: {
+      '/fe/': [
+        {
+          text: '前端物语',
+          items: [
+            { text: '栏目总览', link: '/fe/' },
+            { text: 'JavaScript 基础知识', link: '/fe/javascript/types' },
+            { text: 'CSS 理论知识点', link: '/fe/css/' },
+            { text: 'ES6 常用知识', link: '/fe/es6/' },
+            { text: 'TypeScript 基础知识', link: '/fe/typescript/base' },
+            { text: 'TypeScript 类型体操', link: '/fe/typescript/challenges' },
+            { text: 'Webpack', link: '/fe/webpack/' },
+            { text: '浏览器相关知识', link: '/fe/browser/' },
+            { text: '编程题', link: '/fe/coding/' },
+            { text: '前端算法', link: '/fe/alg/' }
+          ]
+        }
+      ],
+      '/analysis/': [
+        {
+          text: '源码阅读',
+          items: [
+            { text: '栏目总览', link: '/analysis/' },
+            { text: '响应式原理', link: '/analysis/vue/1' },
+            { text: 'VNode节点', link: '/analysis/vue/2' },
+            { text: 'VirtualDOM与diff', link: '/analysis/vue/3' },
+            { text: 'Vue.js异步更新DOM策略及nextTick', link: '/analysis/vue/4' },
+            { text: '依赖收集', link: '/analysis/vue/5' },
+            { text: 'Vue事件机制', link: '/analysis/vue/6' },
+            { text: 'Vue组件间通信', link: '/analysis/vue/7' },
+            { text: 'Vuex源码解析', link: '/analysis/vue/8' }
+          ]
+        }
+      ],
+      '/daily-notes/': [
+        {
+          text: '笔记',
+          items: [{ text: '日常笔记', link: '/daily-notes/' }]
+        },
+        {
+          text: '踩坑记录',
+          items: [
+            { text: 'npm 踩坑记录', link: '/pit/npm' },
+            { text: '第三方库踩坑记录', link: '/pit/library' },
+            { text: 'PC 踩坑记录', link: '/pit/pc' },
+            { text: 'H5 踩坑记录', link: '/pit/h5' },
+            { text: '微信开发踩坑记录', link: '/pit/wechat' }
+          ]
+        }
+      ],
+      '/pit/': [
+        {
+          text: '笔记',
+          items: [{ text: '日常笔记', link: '/daily-notes/' }]
+        },
+        {
+          text: '踩坑记录',
+          items: [
+            { text: '踩坑索引', link: '/pit/' },
+            { text: 'npm 踩坑记录', link: '/pit/npm' },
+            { text: '第三方库踩坑记录', link: '/pit/library' },
+            { text: 'PC 踩坑记录', link: '/pit/pc' },
+            { text: 'H5 踩坑记录', link: '/pit/h5' },
+            { text: '微信开发踩坑记录', link: '/pit/wechat' }
+          ]
+        }
+      ],
+      '/efficiency/': [
+        {
+          text: '提效工具',
+          items: [
+            { text: '栏目总览', link: '/efficiency/' },
+            { text: '多平台软件', link: '/efficiency/software/cross-platform' },
+            { text: 'Mac 平台', link: '/efficiency/software/mac' },
+            { text: 'Windows 平台', link: '/efficiency/software/windows' },
+            { text: '浏览器设置与扩展', link: '/efficiency/software/browser' },
+            { text: 'Visual Studio Code 配置', link: '/efficiency/software/vscode' },
+            { text: '在线工具', link: '/efficiency/online-tools' },
+            { text: '书签脚本', link: '/efficiency/bookmark-scripts' }
+          ]
+        }
+      ]
+    },
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/wangwenyin/ww-blogs' }

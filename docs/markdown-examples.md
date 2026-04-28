@@ -1,85 +1,81 @@
-# Markdown Extension Examples
+# Markdown 写作约定
 
-This page demonstrates some of the built-in markdown extensions provided by VitePress.
+这页用于整理当前站点写 Markdown 时的常用约定，避免后续文章风格越来越散，也方便把旧内容逐步统一。
 
-## Syntax Highlighting
+## 标题层级
 
-VitePress provides Syntax Highlighting powered by [Shiki](https://github.com/shikijs/shiki), with additional features like line-highlighting:
+建议保持：
 
-**Input**
+- 页面主标题只用一个 `#`
+- 一级内容块用 `##`
+- 仅在必要时使用 `###`
 
-````md
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
-```
-````
+如果一篇文章出现过深层级，通常说明结构还可以继续收敛。
 
-**Output**
+## 代码块
 
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
+代码块尽量显式写语言类型：
+
+```ts
+function sum(a: number, b: number) {
+  return a + b
 }
 ```
 
-## Custom Containers
+这样能保证高亮效果稳定，也更方便阅读。
 
-**Input**
+## 列表使用
 
-```md
-::: info
-This is an info box.
-:::
+普通说明优先用无序列表：
+
+- 适合列举要点
+- 适合写选择标准
+- 适合写建议和结论
+
+只有在明确存在顺序时再使用有序列表。
+
+## 链接写法
+
+站内链接优先使用相对稳定的路由路径，例如：
+
+- `[前端物语](/fe/)`
+- `[源码阅读](/analysis/)`
+
+这样后续站点迁移时成本更低。
+
+## 写作风格建议
+
+当前站点更适合这种结构：
+
+1. 先说明这篇为什么值得看
+2. 再拆核心概念或路径
+3. 最后补建议、小结和延伸阅读
+
+相比纯罗列，更容易形成长期可读内容。
+
+## 容器与提示块
+
+如果内容里需要特别提醒，可以使用 VitePress 容器语法：
 
 ::: tip
-This is a tip.
+适合写结论、建议或经验提醒。
 :::
 
 ::: warning
-This is a warning.
-:::
-
-::: danger
-This is a dangerous warning.
+适合写风险、边界和容易误判的地方。
 :::
 
 ::: details
-This is a details block.
-:::
-```
-
-**Output**
-
-::: info
-This is an info box.
+适合折叠不影响主线阅读的补充信息。
 :::
 
-::: tip
-This is a tip.
-:::
+## 当前站点更推荐的文章形态
 
-::: warning
-This is a warning.
-:::
+比起只堆工具名或概念名，更推荐：
 
-::: danger
-This is a dangerous warning.
-:::
+- 有问题背景
+- 有取舍逻辑
+- 有适用边界
+- 有个人使用经验或复盘
 
-::: details
-This is a details block.
-:::
-
-## More
-
-Check out the documentation for the [full list of markdown extensions](https://vitepress.dev/guide/markdown).
+这样文章会更像知识沉淀，而不是资料搬运。

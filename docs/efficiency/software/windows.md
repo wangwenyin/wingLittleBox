@@ -4,263 +4,277 @@ description: '收录 Windows 平台下的实用软件，提升使用体验'
 
 # Windows 平台
 
-## 激活工具
+Windows 平台真正有价值的效率提升，通常不是“多装几个工具”，而是让搜索、启动、截图、终端、窗口、清理和开发辅助形成一套稳定工作流。
 
-### 激活神器 Microsoft-Activation-Scripts
+这篇会按使用场景整理，而不是简单堆软件名。一个工具值不值得留，关键看三件事：
 
-使用 HWID / Ohook / KMS38 / Online KMS 激活方法的 Windows 和 Office 激活器
+- 是否高频
+- 是否稳定
+- 是否真的减少了重复动作
 
-> 使用方法
+## 先明确选择原则
 
-1. 右键单击 Windows 开始菜单，然后选择 PowerShell
-2. 复制并粘贴下面的代码，然后按 Enter
+在 Windows 上装工具尤其容易失控，因为可选项太多。我的建议是：
 
-```sh
-irm https://get.activated.win | iex
-```
+- 同类工具只保留一到两个主力
+- 优先选更新稳定、社区活跃、迁移成本低的工具
+- 优先解决“每天都会碰到”的问题
 
-- [Microsoft-Activation-Scripts | GitHub](https://github.com/massgravel/Microsoft-Activation-Scripts)
-- [软件官网](https://massgrave.dev/)
+例如搜索、截图、窗口布局、终端、清理，这些通常比“偶尔才用一次的工具”更值得先处理。
 
-### Office Tool Plus
+## 启动与全局搜索
 
-一个用于部署、激活 Office、Visio、Project 的强大工具
+### Everything
 
-- [Office-Tool | GitHub](https://github.com/YerongAI/Office-Tool)
-- [软件官网](https://otp.landian.vip/zh-cn)
+如果你还在用资源管理器慢慢找文件，Everything 几乎是 Windows 上最直接的效率提升工具。
 
-## 终端神器 Cmder
+它的价值在于：
 
-1. 便携，解压即可用
-2. 支持子窗口
-3. 自带 `git`、`ls` 等命令
-4. 自定义配置项
-
-- [Cmder | Github](https://github.com/cmderdev/cmder)
-- [软件官网](https://cmder.net/)
-
-## 搜索神器 Everything
-
-1. Windows 平台最快的文件搜索软件
-2. 支持整词、路经匹配搜索
-3. 支持正则表达式搜索
+- 文件搜索极快
+- 支持整词、路径匹配和正则
+- 适合作为全局文件入口
 
 [软件官网](https://www.voidtools.com/zh-cn/)
 
-## 效率神器 Wox
+### Wox
 
-1. 可以搜索安装的程序，支持中文拼音模糊搜索
-2. 搜索浏览器书签
-3. 可以调用 Everything 进行快速全局搜索
-4. 网页搜索功能
-5. 支持插件扩展
-6. 支持自定义主题
+Wox 更像是一个启动器入口，和 Everything 搭配使用会更顺。
+
+它适合：
+
+- 快速启动本地程序
+- 搜索浏览器书签
+- 通过插件扩展网页搜索或系统操作
+
+如果你习惯用键盘完成“启动应用、找文件、打开网页”这一连串动作，它会很有帮助。
 
 - [Wox | Github](https://github.com/Wox-launcher/Wox)
 - [软件官网](https://wox.one/)
 
-## 视频播放神器 PotPlayer
+## 终端与开发辅助
 
-1. 界面简洁，可自定义皮肤
-2. 功能强大，设置以播放体验为中心
-3. 纯粹的本地播放器
-4. 视频/音频格式支持非常全面
+### Cmder
+
+Cmder 适合希望在 Windows 上快速获得更顺手命令行体验的用户。
+
+优点包括：
+
+- 便携，解压即可用
+- 支持多标签和分屏
+- 自带 `git`、`ls` 等常用命令
+- 可自定义配置项
+
+如果你已经完全转向更现代的终端方案，也可以把它当作过渡工具看待。
+
+- [Cmder | Github](https://github.com/cmderdev/cmder)
+- [软件官网](https://cmder.net/)
+
+### PowerToys
+
+PowerToys 是 Windows 上非常值得长期保留的一组增强工具，重点不在“某一个功能”，而在于它把很多高频小能力集成得比较完整。
+
+我认为最值得优先打开的是：
+
+- [Color Picker](https://aka.ms/PowerToysOverview_ColorPicker)
+  默认快捷键：`Win` + `Shift` + `C`
+- [FancyZones](https://aka.ms/PowerToysOverview_FancyZones)
+  自定义窗口布局，默认快捷键：`Win` + `~`
+- [File Explorer Add-ons](https://aka.ms/PowerToysOverview_FileExplorerAddOns)
+  快速预览 SVG 和 Markdown
+- [Image Resizer](https://aka.ms/PowerToysOverview_ImageResizer)
+  批量调整图片尺寸
+- [Keyboard Manager](https://aka.ms/PowerToysOverview_KeyboardManager)
+  键位映射
+- [PowerRename](https://aka.ms/PowerToysOverview_PowerRename)
+  批量重命名
+- [PowerToys Run](https://aka.ms/PowerToysOverview_PowerToysRun)
+  快速启动与搜索，默认快捷键：`Alt` + `Space`
+
+- [PowerToys | Github](https://github.com/microsoft/PowerToys)
+- [安装文档](https://docs.microsoft.com/zh-cn/windows/powertoys/install)
+
+## 截图、录屏与视觉辅助
+
+### Snipaste
+
+Snipaste 是非常典型的“用上就很难替代”的工具。
+
+它的价值不只是截图，而是：
+
+- 自动识别界面元素区域
+- 截图后快速标注
+- 贴图功能非常高频
+- 取色和临时参考图体验很好
+
+对于需要写文档、沟通需求、做 bug 反馈的人来说，这类工具几乎是日常必备。
+
+- [软件官网](https://zh.snipaste.com/)
+- [使用文档](https://docs.snipaste.com/zh-cn/getting-started)
+
+### ScreenToGif
+
+如果你经常需要录制操作过程、做演示或反馈交互问题，ScreenToGif 非常实用。
+
+它适合：
+
+- 录制轻量操作演示
+- 做 GIF 说明
+- 对录制内容做简单编辑
+
+- [ScreenToGif | Github](https://github.com/NickeManarin/ScreenToGif)
+- [软件官网](https://www.screentogif.com/)
+
+### Honeyview
+
+作为轻量看图工具，它更适合替代系统默认看图体验。
+
+优点是：
+
+- 图片格式支持多
+- 预览速度快
+- 能看 EXIF 等附加信息
+
+[软件官网](https://www.bandisoft.com/honeyview)
+
+## 媒体与日常使用
+
+### PotPlayer
+
+本地视频播放场景里，PotPlayer 依然是功能和可调性都比较强的选择。
+
+它适合：
+
+- 本地格式兼容需求多
+- 习惯细调播放体验
+- 希望播放器尽量纯粹
 
 - [软件官网](https://potplayer.daum.net/?lang=zh_CN)
 - [最新版直链下载](https://t1.daumcdn.net/potplayer/PotPlayer/Version/Latest/PotPlayerSetup64.exe)
 
-## 压缩/解压神器 bandizip
+### bandizip
 
-1. 界面简洁、清新
-2. 集 压缩/解压/浏览/编辑 为一体
-3. 支持处理乱码
-4. 支持通过对文件完整性的检查来判断压缩包是否受损
+压缩工具属于那种“看起来不重要，但几乎每天都会碰”的基础设施。
+
+bandizip 的优点是：
+
+- 界面清爽
+- 集压缩、解压、浏览、编辑为一体
+- 对乱码和压缩包检查支持比较好
+
+如果你更在意纯净体验，可以特别留意无广告版本。
 
 - 最新版存在广告，需要无广告的可下载 [6.x 版本](https://cn.bandisoft.com/bandizip/old/6/)
+- [软件官网](https://www.bandisoft.com/bandizip/)
 
-[软件官网](https://www.bandisoft.com/bandizip/)
+### EarTrumpet
 
-## 音量管理神器 EarTrumpet
-
-1. 基于 Microsoft Store 托管的 UWP 应用程序，可自动更新，性能影响小
-2. 默认播放设备管理
-3. 支持明 / 暗模式和所有强调色
-4. 支持快捷键设置
-5. 在播放设备之间移动应用
+如果你经常在多个输出设备之间切换，或者希望对不同应用的音量做精细控制，EarTrumpet 会明显优于系统默认体验。
 
 - [EarTrumpet | Github](https://github.com/File-New-Project/EarTrumpet)
 - [Microsoft Store](https://www.microsoft.com/en-us/p/eartrumpet/9nblggh516xp)
 
-## 看图神器 Honeyview
+## 系统整理与维护
 
-1. 支持众多图片格式，如 PSD 文件预览
-2. 对图像格式进行批量转换和调整
-3. 可以显示包括 GPS 信息在内的 JPEG 格式的 EXIF 信息
+### Dism++
 
-[软件官网](https://www.bandisoft.com/honeyview)
+Dism++ 更适合作为系统增强和空间清理工具使用。
 
-## 壁纸神器 Wallpaper Engine
+它的价值在于：
 
-1. 内存占用低
-2. 支持视频、网页、2D、3D、GIF 等类型壁纸
-3. 强大的创意工坊拥有海量壁纸可供选择
+- 体积小
+- 解压即用
+- 集成常见系统维护能力
 
-- [Steam 商店地址](https://store.steampowered.com/app/431960/Wallpaper_Engine/)
-- [创意工坊](https://steamcommunity.com/app/431960/workshop/)
-
-## 系统优化工具 Dism++
-
-1. 基于 Windows 系统原生功能 Dism 开发的增强工具
-2. 体积小，解压即用，方便快捷
-3. 集成空间清理、系统管理/优化、热备份还原等功能于一体
+但涉及系统层修改时，仍然建议先理解选项含义，不要无脑全点。
 
 - [DISM++ | Github](https://github.com/Chuyu-Team/Dism-Multi-language)
 - [软件官网](https://www.chuyu.me/zh-Hans/index.html)
 
-## 隐私优化 WPD
+### WizTree
 
-1. 隐私管理
-2. 预装应用卸载
-3. 绿色免费、支持中文
+当你怀疑磁盘空间被莫名吃掉时，WizTree 这类工具会比手动翻目录高效得多。
 
-[软件官网](https://wpd.app)
+它适合：
 
-## 微信/QQ/TIM 防撤回补丁
+- 快速定位大文件和大目录
+- 做空间占用可视化分析
+- 清理前先建立全局视图
 
-1. 支持微信/QQ/TIM 防撤回
-2. 支持微信多开
+[软件官网](https://www.diskanalyzer.com)
 
-[微信/QQ/TIM 防撤回补丁 | Github](https://github.com/huiyadanli/RevokeMsgPatcher)
+### HiBit Uninstaller
 
-## 微信清理工具 CleanMyWechat
+如果你经常装卸软件，HiBit Uninstaller 适合做更彻底的清理。
 
-1. 自动识别微信账号，支持用户选择自定义路径
-2. 同时管理多个账号，保留配置参数，打开即用
-3. 自由设置想要删除的文件类型，包括图片类缓存、文件、图片、视频
-4. 自由设置需要删除的文件的距离时间，默认 365 天
-5. 删除后的文件放置在回收站中，检查后自行清空，防止删错需要的文件
+适用价值：
 
-[CleanMyWechat | Github](https://github.com/blackboxo/CleanMyWechat)
+- 强制卸载
+- 批量卸载
+- 清理残留项
 
-## 任务栏透明 TranslucentTB
+[软件官网](https://www.hibitsoft.ir/Uninstaller.html)
 
-1. 支持亚克力、模糊、透明、主题色、不透明效果
-2. 支持自定义颜色
-3. 只支持 Windows 10
+### Duplicate Cleaner
+
+当素材、下载和备份文件逐渐堆起来时，重复文件清理工具会非常省时间。
+
+- [软件官网](https://www.duplicatecleaner.com)
+- [绿色汉化版](https://www.52pojie.cn/forum.php?mod=viewthread&tid=1224420)
+
+## 网络、状态与桌面细节
+
+### TrafficMonitor
+
+适合希望随时看到网速、CPU 和内存状态的用户，尤其是对下载、调试网络或关注系统占用的人。
+
+[TrafficMonitor | Github](https://github.com/zhongyang219/TrafficMonitor)
+
+### TranslucentTB
+
+这是典型的“非必要但能提升桌面观感”的工具，适合你已经把功能链路稳定后，再去做美观增强。
 
 - [TranslucentTB | Github](https://github.com/TranslucentTB/TranslucentTB)
 - [Microsoft Store](https://www.microsoft.com/zh-cn/p/translucenttb/9pf4kz2vn4w9)
 - [Microsoft Store 汉化版](https://www.microsoft.com/zh-cn/p/translucenttb-%E6%B1%89%E5%8C%96-by-tpxxn/9n5w18jc9bg2)
 
-## 查重神器 Duplicate Cleaner
+### Wallpaper Engine
 
-1. 快速查找重复文件、支持多目录
-2. 灵活的搜索设置
-3. 在详细列表中查看所有文件信息
-4. 删除重复文件至回收站
-5. 移动重复文件到新位置
+更偏个性化而不是纯效率，但如果你长时间面对桌面环境，一个舒适的视觉氛围确实会影响体验。
 
-- [软件官网](https://www.duplicatecleaner.com)
-- [绿色汉化版](https://www.52pojie.cn/forum.php?mod=viewthread&tid=1224420)
+- [Steam 商店地址](https://store.steampowered.com/app/431960/Wallpaper_Engine/)
+- [创意工坊](https://steamcommunity.com/app/431960/workshop/)
 
-## 电子书格式转换器 NeatConverter
+## 微信与本地日常工具
 
-1. 完全免费，简单易用
-2. 支持 ePub、Azw3、Mobi、Doc、PDF、TXT 文件的互转
+### CleanMyWechat
+
+如果微信长期作为工作沟通工具，缓存膨胀是很常见的问题。这类清理工具的价值在于定期回收空间，而不是等磁盘爆掉后再补救。
+
+[CleanMyWechat | Github](https://github.com/blackboxo/CleanMyWechat)
+
+### NeatConverter
+
+适合作为轻量电子书格式转换工具保留在工具箱里，不一定高频，但偶尔很省事。
 
 [软件官网](https://www.neat-reader.cn/downloads/converter)
 
-## 系统增强工具 PowerToys
+### KeymouseGo
 
-- [Color Picker](https://aka.ms/PowerToysOverview_ColorPicker) 颜色选择器
-
-  - 默认启动快捷键: `Win` + `Shift` + `C`
-
-- [FancyZones](https://aka.ms/PowerToysOverview_FancyZones) 窗口管理器
-
-  - 自定义窗口布局
-  - 默认启动快捷键: `Win` + `~`
-
-- [File Explorer Add-ons](https://aka.ms/PowerToysOverview_FileExplorerAddOns) 文件资源管理器
-
-  - 快速预览 SVG 和 Markdown 文件
-
-- [Image Resizer](https://aka.ms/PowerToysOverview_ImageResizer) 图像大小调整器
-
-  - 修改图片大小、旋转方向、图片格式
-  - 支持批量修改
-
-- [Keyboard Manager](https://aka.ms/PowerToysOverview_KeyboardManager) 键盘管理器
-
-  - 修改键位映射
-
-- [PowerRename](https://aka.ms/PowerToysOverview_PowerRename) 批量重命名工具
-
-  - 添加文件名前缀、后缀
-  - 支持搜索、替换、正则表达式匹配
-  - 排除指定的文件、文件夹
-  - 预览重命名结果
-
-- [PowerToys Run](https://aka.ms/PowerToysOverview_PowerToysRun) 快速启动程序
-
-  - 搜索应用程序、文件夹或文件
-  - 使用计算器执行简单计算
-  - 默认启动快捷键: `Alt` + `Space`
-
-- [PowerToys | Github](https://github.com/microsoft/PowerToys)
-- [安装文档](https://docs.microsoft.com/zh-cn/windows/powertoys/install)
-
-## 网速监控悬浮窗 TrafficMonitor
-
-1. 显示当前实现网络传输速率、CPU 和内存占用率
-2. 支持嵌入到任务栏显示
-3. 支持更换皮肤和自定义皮肤
-4. 历史流量统计
-
-[TrafficMonitor | Github](https://github.com/zhongyang219/TrafficMonitor)
-
-## GIF 录制神器 ScreenToGif
-
-1. 支持屏幕、摄像头、画板录制
-2. 可对 Gif 进行压缩、裁剪、涂鸦、模糊、添加字幕、添加水印、添加进度条等操作
-3. 免费无广告支持免安装使用
-
-- [ScreenToGif | Github](https://github.com/NickeManarin/ScreenToGif)
-- [软件官网](https://www.screentogif.com/)
-
-## 按键精灵 KeymouseGo
-
-录制鼠标键盘操作进行自动化操作
+更偏轻量自动化场景，适合偶发重复操作录制，但不建议把复杂核心流程建立在这类工具之上。
 
 [KeymouseGo | Github](https://github.com/taojy123/KeymouseGo)
 
-## 截图神器 Snipaste
+## 关于系统修改与第三方补丁
 
-1. 免费、无广告
-2. 自动检测界面元素区域、像素级的鼠标移动控制、截图范围控制、截图历史记录回放
-3. 标注(矩形、椭圆、线条、箭头、铅笔、马克笔、文字、马赛克、高斯模糊等)
-4. 支持剪贴板中的图像、纯文本、HTML 文本、颜色信息、图像文件转化成图片
-5. 贴图、取色
-6. 支持自定义设置
+像激活、补丁、隐私策略修改这类工具，不适合一概而论地纳入“默认推荐”。这类能力通常带有更强的系统风险、合规风险或兼容性风险，更适合单独谨慎评估，而不是混在日常效率工具清单里默认执行。
 
-- [软件官网](https://zh.snipaste.com/)
-- [使用文档](https://docs.snipaste.com/zh-cn/getting-started)
+## 小结
 
-## 卸载神器 HiBit Uninstaller
+Windows 上最值得优先建立的效率链路通常是：
 
-1. 强制卸载、批量卸载
-2. 安全的清理注册表和垃圾文件
-3. 快捷方式修复
-4. 空文件夹删除
-5. 系统更新补丁管理
+1. `Everything` / 启动器解决“找东西”
+2. `Snipaste` / `ScreenToGif` 解决“表达与沟通”
+3. `PowerToys` 解决“窗口、快捷操作和小增强”
+4. `Dism++` / `WizTree` / 卸载工具解决“长期维护”
 
-[软件官网](https://www.hibitsoft.ir/Uninstaller.html)
-
-## 硬盘分析工具 WizTree
-
-1. 分析速度极快
-2. 可视化显示空间占用
-3. 支持数据导出
-4. 免费无广告支持免安装使用
-
-[软件官网](https://www.diskanalyzer.com)
+只要这几条链路顺了，整体体验会比零散装很多工具更稳定。
