@@ -54,6 +54,23 @@ export default defineConfig({
           ]
         }
       ],
+      '/movie-life/': [
+        {
+          text: '电影人生',
+          items: [
+            { text: '栏目总览', link: '/movie-life/' },
+            { text: '栏目说明', link: '/movie-life/about-this-column' },
+            { text: '成长与选择', link: '/movie-life/growth-and-choice' },
+            { text: '亲密关系', link: '/movie-life/intimacy-and-distance' },
+            { text: '孤独与陪伴', link: '/movie-life/loneliness-and-company' },
+            { text: '告别与和解', link: '/movie-life/farewell-and-reconciliation' },
+            { text: '海边的曼彻斯特', link: '/movie-life/manchester-by-the-sea' },
+            { text: '花束般的恋爱', link: '/movie-life/we-made-a-beautiful-bouquet' },
+            { text: '心灵奇旅', link: '/movie-life/soul' },
+            { text: '2026 观影记录', link: '/movie-life/annual-2026' }
+          ]
+        }
+      ],
       '/daily-notes/': [
         {
           text: '笔记',
