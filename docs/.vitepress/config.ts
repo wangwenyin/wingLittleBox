@@ -1,5 +1,10 @@
+import { loadEnv } from 'vite'
 import { defineConfig } from 'vitepress'
 import { nav } from './configs'
+
+const env = loadEnv('', process.cwd(), '')
+const umamiScriptUrl = env.UMAMI_SCRIPT_URL || 'https://cloud.umami.is/script.js'
+const umamiWebsiteId = env.UMAMI_WEBSITE_ID
 
 export default defineConfig({
   title: 'wing的小盒子',
@@ -8,7 +13,17 @@ export default defineConfig({
   cleanUrls: true,
   head: [
     ['meta', { name: 'msapplication-TileImage', content: '/favicon.ico' }],
-    ['link', { rel: 'icon', href: '/favicon.ico' }]
+    ['link', { rel: 'icon', href: '/favicon.ico' }],
+    ...(umamiScriptUrl && umamiWebsiteId
+      ? [[
+          'script',
+          {
+            defer: '',
+            src: umamiScriptUrl,
+            'data-website-id': umamiWebsiteId
+          }
+        ] as const]
+      : [])
   ],
   themeConfig: {
     logo: '/logo.png',

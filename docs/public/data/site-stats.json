@@ -1,0 +1,11 @@
+{
+  "enabled": true,
+  "source": "umami",
+  "message": "",
+  "fetchedAt": "2026-05-06T10:10:11.432Z",
+  "stats": {
+    "pageviews": 9,
+    "visitors": 1,
+    "visits": 1
+  }
+}

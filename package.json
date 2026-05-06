@@ -20,7 +20,9 @@
   },
   "scripts": {
     "docs:sync-movie-hot": "node scripts/fetch-douban-nowplaying.mjs",
-    "predocs:build": "npm run docs:sync-movie-hot",
+    "docs:sync-site-stats": "node scripts/fetch-umami-stats.mjs",
+    "predocs:build": "npm run docs:sync-movie-hot && npm run docs:sync-site-stats",
+    "predocs:dev": "npm run docs:sync-site-stats",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"

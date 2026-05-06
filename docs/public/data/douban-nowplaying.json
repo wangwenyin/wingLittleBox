@@ -1,25 +1,25 @@
 {
-  "updatedAt": "2026-05-03T10:58:48.766Z",
+  "updatedAt": "2026-05-06T10:01:51.838Z",
   "source": "https://movie.douban.com/",
   "movies": [
     {
+      "title": "给阿嬷的情书",
+      "href": "https://movie.douban.com/subject/37116446/?from=showing",
+      "cover": "/data/douban-nowplaying/movie-1.jpg"
+    },
+    {
       "title": "消失的人",
       "href": "https://movie.douban.com/subject/36965301/?from=showing",
-      "cover": "/data/douban-nowplaying/movie-1.jpg"
+      "cover": "/data/douban-nowplaying/movie-2.jpg"
     },
     {
       "title": "寒战1994",
       "href": "https://movie.douban.com/subject/36857924/?from=showing",
-      "cover": "/data/douban-nowplaying/movie-2.jpg"
+      "cover": "/data/douban-nowplaying/movie-3.jpg"
     },
     {
       "title": "穿普拉达的女王2",
       "href": "https://movie.douban.com/subject/36956594/?from=showing",
-      "cover": "/data/douban-nowplaying/movie-3.jpg"
-    },
-    {
-      "title": "给阿嬷的情书",
-      "href": "https://movie.douban.com/subject/37116446/?from=showing",
       "cover": "/data/douban-nowplaying/movie-4.jpg"
     },
     {
