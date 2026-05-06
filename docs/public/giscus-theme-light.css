@@ -1,0 +1,62 @@
+:root {
+  color-scheme: light;
+  --color-accent-fg: #3451b2;
+  --color-accent-emphasis: #3451b2;
+  --color-accent-muted: rgba(52, 81, 178, 0.18);
+  --color-btn-primary-text: #ffffff;
+  --color-btn-primary-bg: #3451b2;
+  --color-btn-primary-hover-bg: #3a5ccc;
+  --color-btn-primary-selected-bg: #5672cd;
+  --color-btn-primary-border: #3451b2;
+  --color-btn-primary-hover-border: #3a5ccc;
+  --color-btn-primary-disabled-bg: #9eabdf;
+  --color-btn-primary-disabled-border: #9eabdf;
+  --color-btn-primary-focus-bg: #3451b2;
+  --color-btn-primary-focus-border: #3451b2;
+  --color-fg-default: #213547;
+  --color-fg-muted: #5f6b7a;
+  --color-canvas-default: #ffffff;
+  --color-canvas-subtle: #fafbfc;
+  --color-border-default: rgba(60, 60, 67, 0.1);
+  --color-border-muted: rgba(60, 60, 67, 0.06);
+  --color-success-fg: #18794e;
+}
+
+main {
+  font-family:
+    'Chinese Quotes',
+    'Inter',
+    'ui-sans-serif',
+    'system-ui',
+    sans-serif;
+}
+
+a {
+  color: #3451b2;
+}
+
+.btn-primary,
+button.btn-primary,
+button[class*='primary'],
+[role='button'][class*='primary'] {
+  background-color: #3451b2 !important;
+  border-color: #3451b2 !important;
+  color: #ffffff !important;
+}
+
+.btn-primary:hover,
+button.btn-primary:hover,
+button[class*='primary']:hover,
+[role='button'][class*='primary']:hover {
+  background-color: #3a5ccc !important;
+  border-color: #3a5ccc !important;
+}
+
+.gsc-comment-box,
+.gsc-timeline {
+  border-radius: 16px;
+}
+
+.gsc-comment-box {
+  background: linear-gradient(180deg, rgba(52, 81, 178, 0.03), rgba(52, 81, 178, 0));
+}
