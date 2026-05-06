@@ -1,4 +1,4 @@
-:root {
+main {
   color-scheme: dark;
   --color-accent-fg: #a8b1ff;
   --color-accent-emphasis: #5c73e7;
@@ -13,12 +13,20 @@
   --color-btn-primary-disabled-border: #4958a7;
   --color-btn-primary-focus-bg: #5c73e7;
   --color-btn-primary-focus-border: #5c73e7;
-  --color-fg-default: #dfdfd6;
-  --color-fg-muted: #98989f;
+  --color-fg-default: #e6e6eb;
+  --color-fg-muted: #b2b6c2;
+  --color-fg-subtle: #9499a8;
   --color-canvas-default: #1b1b1f;
-  --color-canvas-subtle: #1e1f25;
-  --color-border-default: rgba(255, 255, 255, 0.08);
-  --color-border-muted: rgba(255, 255, 255, 0.05);
+  --color-canvas-subtle: #23252d;
+  --color-canvas-overlay: #1f2128;
+  --color-canvas-inset: #17181d;
+  --color-neutral-muted: rgba(255, 255, 255, 0.08);
+  --color-border-default: rgba(255, 255, 255, 0.06);
+  --color-border-muted: rgba(255, 255, 255, 0.035);
+  --color-border-subtle: rgba(255, 255, 255, 0.025);
+  --color-input-bg: #20222a;
+  --color-input-border: rgba(255, 255, 255, 0.08);
+  --color-input-contrast-bg: #17181d;
   --color-success-fg: #3dd68c;
 }
 
@@ -58,5 +66,38 @@ button[class*='primary']:hover,
 }
 
 .gsc-comment-box {
-  background: linear-gradient(180deg, rgba(92, 115, 231, 0.08), rgba(92, 115, 231, 0));
+  background: linear-gradient(180deg, rgba(92, 115, 231, 0.035), rgba(92, 115, 231, 0));
+}
+
+.gsc-comment-box,
+.gsc-comment,
+.gsc-reactions,
+.gsc-homepage-bg,
+.gsc-timeline-item {
+  border-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+main,
+main *,
+.gsc-comment-box,
+.gsc-comment-box textarea,
+.gsc-comment-box input,
+.gsc-comment-content,
+.gsc-comment-author-avatar,
+.gsc-reactions-count,
+.gsc-social-reaction-summary-item-count {
+  color: #e6e6eb !important;
+}
+
+.gsc-comment-box textarea,
+.gsc-comment-box input,
+.gsc-reply-box,
+.gsc-comment-box-tabs,
+.gsc-comment-box-md {
+  background-color: #20222a !important;
+}
+
+.gsc-comment-box textarea::placeholder,
+.gsc-comment-box input::placeholder {
+  color: #9499a8 !important;
 }

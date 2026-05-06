@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { computed, nextTick, onBeforeUnmount, onMounted, watch } from 'vue'
-import { useData, useRoute } from 'vitepress'
+import { useData, useRoute, withBase } from 'vitepress'
 
 const GISCUS_SESSION_KEY = 'giscus'
+const GISCUS_THEME_VERSION = '20260506-2'
 const GISCUS_THEME_LIGHT_PATH = '/giscus-theme-light.css'
 const GISCUS_THEME_DARK_PATH = '/giscus-theme-dark.css'
 
-const { isDark, frontmatter, lang } = useData()
+const { isDark, frontmatter } = useData()
 const route = useRoute()
 
 const commentsContainerId = 'giscus-comments'
@@ -26,9 +27,19 @@ function getThemeUrl(dark: boolean) {
     return dark ? 'dark' : 'light'
   }
 
-  const path = dark ? GISCUS_THEME_DARK_PATH : GISCUS_THEME_LIGHT_PATH
+  // giscus runs on https inside an iframe. During local http development,
+  // its widget cannot load our local custom CSS due mixed-content blocking,
+  // so fall back to stable built-in themes for readability.
+  if (window.location.protocol !== 'https:') {
+    return dark ? 'transparent_dark' : 'noborder_light'
+  }
 
-  return new URL(path, window.location.origin).toString()
+  const path = withBase(dark ? GISCUS_THEME_DARK_PATH : GISCUS_THEME_LIGHT_PATH)
+
+  const url = new URL(path, window.location.origin)
+  url.searchParams.set('v', GISCUS_THEME_VERSION)
+
+  return url.toString()
 }
 
 function waitForGiscusFrame(callback: () => void, retries = 30) {
@@ -90,7 +101,7 @@ function createScript() {
   script.setAttribute('data-emit-metadata', '0')
   script.setAttribute('data-input-position', 'top')
   script.setAttribute('data-theme', themeName.value)
-  script.setAttribute('data-lang', lang.value === 'zh-CN' ? 'zh-CN' : 'en')
+  script.setAttribute('data-lang', 'zh-CN')
   script.setAttribute('data-loading', 'lazy')
 
   return script

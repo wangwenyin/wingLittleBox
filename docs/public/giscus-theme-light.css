@@ -1,4 +1,4 @@
-:root {
+main {
   color-scheme: light;
   --color-accent-fg: #3451b2;
   --color-accent-emphasis: #3451b2;
@@ -14,11 +14,19 @@
   --color-btn-primary-focus-bg: #3451b2;
   --color-btn-primary-focus-border: #3451b2;
   --color-fg-default: #213547;
-  --color-fg-muted: #5f6b7a;
+  --color-fg-muted: #667180;
+  --color-fg-subtle: #7b8794;
   --color-canvas-default: #ffffff;
   --color-canvas-subtle: #fafbfc;
-  --color-border-default: rgba(60, 60, 67, 0.1);
-  --color-border-muted: rgba(60, 60, 67, 0.06);
+  --color-canvas-overlay: #ffffff;
+  --color-canvas-inset: #fafbfc;
+  --color-neutral-muted: rgba(175, 184, 193, 0.2);
+  --color-border-default: rgba(60, 60, 67, 0.08);
+  --color-border-muted: rgba(60, 60, 67, 0.045);
+  --color-border-subtle: rgba(60, 60, 67, 0.035);
+  --color-input-bg: #ffffff;
+  --color-input-border: rgba(60, 60, 67, 0.08);
+  --color-input-contrast-bg: #f6f8fa;
   --color-success-fg: #18794e;
 }
 
@@ -58,5 +66,13 @@ button[class*='primary']:hover,
 }
 
 .gsc-comment-box {
-  background: linear-gradient(180deg, rgba(52, 81, 178, 0.03), rgba(52, 81, 178, 0));
+  background: linear-gradient(180deg, rgba(52, 81, 178, 0.018), rgba(52, 81, 178, 0));
+}
+
+.gsc-comment-box,
+.gsc-comment,
+.gsc-reactions,
+.gsc-homepage-bg,
+.gsc-timeline-item {
+  border-color: rgba(60, 60, 67, 0.08) !important;
 }
