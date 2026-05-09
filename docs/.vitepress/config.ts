@@ -1,30 +1,36 @@
 import { loadEnv } from 'vite'
 import { defineConfig } from 'vitepress'
+import type { HeadConfig } from 'vitepress'
 import { nav } from './configs'
 
-const env = loadEnv('', process.cwd(), '')
+const envDir = decodeURIComponent(
+  new URL('../../', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')
+)
+const env = loadEnv('', envDir, '')
 const umamiScriptUrl = env.UMAMI_SCRIPT_URL || 'https://cloud.umami.is/script.js'
 const umamiWebsiteId = env.UMAMI_WEBSITE_ID
+const head: HeadConfig[] = [
+  ['meta', { name: 'msapplication-TileImage', content: '/favicon.ico' }],
+  ['link', { rel: 'icon', href: '/favicon.ico' }]
+]
+
+if (umamiScriptUrl && umamiWebsiteId) {
+  head.push([
+    'script',
+    {
+      defer: '',
+      src: umamiScriptUrl,
+      'data-website-id': umamiWebsiteId
+    }
+  ])
+}
 
 export default defineConfig({
   title: 'wing的小盒子',
   description: '记录前端成长、源码阅读、效率工具与生活观察',
   lastUpdated: true,
   cleanUrls: true,
-  head: [
-    ['meta', { name: 'msapplication-TileImage', content: '/favicon.ico' }],
-    ['link', { rel: 'icon', href: '/favicon.ico' }],
-    ...(umamiScriptUrl && umamiWebsiteId
-      ? [[
-          'script',
-          {
-            defer: '',
-            src: umamiScriptUrl,
-            'data-website-id': umamiWebsiteId
-          }
-        ] as const]
-      : [])
-  ],
+  head,
   themeConfig: {
     logo: '/logo.png',
     search: {
