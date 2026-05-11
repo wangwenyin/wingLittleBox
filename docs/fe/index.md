@@ -1,3 +1,8 @@
+---
+title: 前端物语
+description: 收拢 JavaScript、CSS、TypeScript、Webpack、浏览器与算法等前端基础内容，适合作为系统学习索引。
+---
+
 # 前端物语
 
 这里收拢前端基础知识、工程化与通用能力建设内容，适合作为系统学习时的目录页使用。

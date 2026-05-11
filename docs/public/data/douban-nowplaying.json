@@ -1,6 +1,8 @@
 {
-  "updatedAt": "2026-05-09T03:17:28.061Z",
+  "updatedAt": "2026-05-11T06:10:44.285Z",
   "source": "https://movie.douban.com/",
+  "fallback": false,
+  "message": "",
   "movies": [
     {
       "title": "给阿嬷的情书",
@@ -23,8 +25,8 @@
       "cover": "/data/douban-nowplaying/movie-4.jpg"
     },
     {
-      "title": "青铜葵花",
-      "href": "https://movie.douban.com/subject/36500314/?from=showing",
+      "title": "纵横四海",
+      "href": "https://movie.douban.com/subject/1295409/?from=showing",
       "cover": "/data/douban-nowplaying/movie-5.jpg"
     }
   ]

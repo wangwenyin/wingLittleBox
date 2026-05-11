@@ -32,7 +32,7 @@
 
 ## 本地开发
 
-建议使用较新的 Node.js 环境，并先安装依赖：
+建议使用 Node.js 20 及以上版本，并先安装依赖：
 
 ```bash
 npm install
@@ -52,6 +52,7 @@ cp .env.example .env
 | `UMAMI_API_KEY` | 用于构建阶段拉取统计数据的 API Key | `your-api-key` |
 | `UMAMI_SCRIPT_URL` | Umami 前端统计脚本地址，可选 | `https://cloud.umami.is/script.js` |
 | `UMAMI_API_URL` | Umami API 基地址，可选 | `https://api.umami.is/v1` |
+| `SITE_URL` | 站点正式访问地址，用于生成 sitemap/robots 和站点级 SEO 元信息 | `https://your-domain.com` |
 
 启动本地开发服务器：
 
@@ -77,6 +78,35 @@ npm run docs:preview
 |---|---|
 | 已配置 Umami 环境变量 | 构建前会同步首页页脚所需的累计访问/访客统计 |
 | 未配置 Umami 环境变量 | 统计同步会自动跳过，首页不显示统计文案，但构建仍会成功 |
+| 豆瓣热映同步失败 | 会保留上一次成功快照；若没有历史快照，则写入空数据兜底，构建仍会成功 |
+
+## Vercel 部署说明
+
+项目已补充面向 Vercel 的基础部署配置：
+
+| 文件 | 作用 |
+|---|---|
+| `vercel.json` | 固定构建命令、输出目录，并为 `/assets/*`、`/data/*` 设置更合理的缓存头 |
+| `.nvmrc` | 固定本地与云端推荐 Node 主版本为 `20` |
+| `package.json#engines` | 约束 Node 运行时版本，降低构建环境漂移 |
+| `scripts/generate-seo-files.mjs` | 基于 `SITE_URL` 自动生成 `robots.txt` 与 `sitemap.xml` |
+
+当前部署策略说明：
+
+| 项目 | 策略 |
+|---|---|
+| 构建命令 | `npm run docs:build` |
+| 输出目录 | `docs/.vitepress/dist` |
+| JSON 数据缓存 | `max-age=0, must-revalidate`，保证站点统计和电影数据更新更及时 |
+| VitePress 哈希资源缓存 | `max-age=31536000, immutable`，提升静态资源缓存命中率 |
+| sitemap/robots | 构建前自动生成；未配置 `SITE_URL` 时只生成基础 `robots.txt`，跳过错误 sitemap |
+
+SEO 相关说明：
+
+| 项目 | 行为 |
+|---|---|
+| `SITE_URL` 已配置 | 生成 `sitemap.xml`，并注入站点级 `og:url` / `twitter:url` |
+| `SITE_URL` 未配置 | 构建仍成功，但不会生成绝对地址错误的 sitemap |
 
 ## 内容与配置说明
 

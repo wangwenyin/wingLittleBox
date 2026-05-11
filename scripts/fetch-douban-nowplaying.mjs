@@ -1,4 +1,4 @@
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { request } from "node:https";
 import { extname } from "node:path";
 
@@ -6,6 +6,30 @@ const SOURCE_URL = "https://movie.douban.com/";
 const OUTPUT_DIR = new URL("../docs/public/data/", import.meta.url);
 const OUTPUT_FILE = new URL("douban-nowplaying.json", OUTPUT_DIR);
 const IMAGE_DIR = new URL("douban-nowplaying/", OUTPUT_DIR);
+
+function createPayload({ movies = [], message = "", fallback = false, updatedAt } = {}) {
+  return {
+    updatedAt: updatedAt || new Date().toISOString(),
+    source: SOURCE_URL,
+    fallback,
+    message,
+    movies
+  };
+}
+
+async function writePayload(payload) {
+  await mkdir(OUTPUT_DIR, { recursive: true });
+  await writeFile(OUTPUT_FILE, `${JSON.stringify(payload, null, 2)}\n`, "utf8");
+}
+
+async function readExistingPayload() {
+  try {
+    const content = await readFile(OUTPUT_FILE, "utf8");
+    return JSON.parse(content);
+  } catch {
+    return null;
+  }
+}
 
 function fetchUrl(url) {
   return new Promise((resolve, reject) => {
@@ -113,24 +137,38 @@ async function main() {
     })
   );
 
-  await writeFile(
-    OUTPUT_FILE,
-    `${JSON.stringify(
-      {
-        updatedAt: new Date().toISOString(),
-        source: SOURCE_URL,
-        movies: moviesWithLocalCovers
-      },
-      null,
-      2
-    )}\n`,
-    "utf8"
+  await writePayload(
+    createPayload({
+      movies: moviesWithLocalCovers
+    })
   );
 
   console.log(`Saved ${moviesWithLocalCovers.length} movies to docs/public/data/douban-nowplaying.json`);
 }
 
-main().catch((error) => {
-  console.error(error instanceof Error ? error.message : String(error));
-  process.exitCode = 1;
+main().catch(async (error) => {
+  const message = error instanceof Error ? error.message : String(error);
+  const existingPayload = await readExistingPayload();
+
+  if (existingPayload?.movies?.length) {
+    await writePayload(
+      createPayload({
+        movies: existingPayload.movies,
+        message,
+        fallback: true,
+        updatedAt: existingPayload.updatedAt
+      })
+    );
+    console.warn(`Douban sync failed, kept previous snapshot: ${message}`);
+    return;
+  }
+
+  await writePayload(
+    createPayload({
+      movies: [],
+      message,
+      fallback: true
+    })
+  );
+  console.warn(`Douban sync failed, wrote empty fallback payload: ${message}`);
 });

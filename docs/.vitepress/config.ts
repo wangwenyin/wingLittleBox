@@ -3,15 +3,91 @@ import { defineConfig } from 'vitepress'
 import type { HeadConfig } from 'vitepress'
 import { nav } from './configs'
 
+const SITE_NAME = 'wing的小盒子'
+const SITE_DESCRIPTION = '记录前端成长、源码阅读、效率工具与生活观察'
+const DEFAULT_SOCIAL_IMAGE = '/logo.png'
 const envDir = decodeURIComponent(
   new URL('../../', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')
 )
 const env = loadEnv('', envDir, '')
 const umamiScriptUrl = env.UMAMI_SCRIPT_URL || 'https://cloud.umami.is/script.js'
 const umamiWebsiteId = env.UMAMI_WEBSITE_ID
+const siteUrl = env.SITE_URL?.replace(/\/+$/, '')
+
+function readFrontmatterText(value: unknown) {
+  return typeof value === 'string' ? value.trim() : ''
+}
+
+function toRoute(relativePath: string) {
+  const noExtPath = relativePath.replace(/\.md$/i, '')
+
+  if (noExtPath === 'index') {
+    return '/'
+  }
+
+  if (noExtPath.endsWith('/index')) {
+    return `/${noExtPath.slice(0, -'/index'.length)}/`
+  }
+
+  return `/${noExtPath}`
+}
+
+function toAbsoluteUrl(url: string) {
+  if (!url) {
+    return ''
+  }
+
+  if (/^https?:\/\//i.test(url)) {
+    return url
+  }
+
+  if (!siteUrl) {
+    return url.startsWith('/') ? url : `/${url}`
+  }
+
+  return `${siteUrl}${url.startsWith('/') ? url : `/${url}`}`
+}
+
+function stripHtml(value: string) {
+  return value
+    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/&amp;/gi, '&')
+    .replace(/&lt;/gi, '<')
+    .replace(/&gt;/gi, '>')
+    .replace(/&#39;/gi, "'")
+    .replace(/&quot;/gi, '"')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+function truncateText(value: string, maxLength = 160) {
+  if (value.length <= maxLength) {
+    return value
+  }
+
+  return `${value.slice(0, maxLength - 1).trimEnd()}…`
+}
+
+function getContentExcerpt(content: string) {
+  const firstParagraphMatch = content.match(/<p>([\s\S]*?)<\/p>/i)
+
+  if (firstParagraphMatch?.[1]) {
+    return truncateText(stripHtml(firstParagraphMatch[1]))
+  }
+
+  return truncateText(stripHtml(content))
+}
+
 const head: HeadConfig[] = [
   ['meta', { name: 'msapplication-TileImage', content: '/favicon.ico' }],
-  ['link', { rel: 'icon', href: '/favicon.ico' }]
+  ['link', { rel: 'icon', href: '/favicon.ico' }],
+  ['meta', { name: 'theme-color', content: '#ffffff' }],
+  ['meta', { property: 'og:site_name', content: SITE_NAME }],
+  ['meta', { property: 'og:locale', content: 'zh_CN' }],
+  ['meta', { name: 'twitter:card', content: 'summary_large_image' }]
 ]
 
 if (umamiScriptUrl && umamiWebsiteId) {
@@ -26,11 +102,59 @@ if (umamiScriptUrl && umamiWebsiteId) {
 }
 
 export default defineConfig({
-  title: 'wing的小盒子',
-  description: '记录前端成长、源码阅读、效率工具与生活观察',
+  ...(siteUrl ? { site: siteUrl } : {}),
+  title: SITE_NAME,
+  description: SITE_DESCRIPTION,
   lastUpdated: true,
   cleanUrls: true,
   head,
+  transformHead({ content, pageData, title }) {
+    const route = toRoute(pageData.relativePath)
+    const frontmatter = pageData.frontmatter
+    const pageDescription =
+      readFrontmatterText(frontmatter.description) || getContentExcerpt(content) || SITE_DESCRIPTION
+    const socialImage = toAbsoluteUrl(
+      readFrontmatterText(frontmatter.cover) || DEFAULT_SOCIAL_IMAGE
+    )
+    const canonicalUrl = siteUrl ? `${siteUrl}${route}` : ''
+    const isNoindex = frontmatter.draft === true || frontmatter.noindex === true
+    const publishedTime = readFrontmatterText(frontmatter.date)
+    const modifiedTime =
+      readFrontmatterText(frontmatter.lastUpdated) ||
+      (typeof pageData.lastUpdated === 'number' ? new Date(pageData.lastUpdated).toISOString() : '')
+    const pageType = publishedTime ? 'article' : 'website'
+    const seoHead: HeadConfig[] = [
+      ['meta', { name: 'description', content: pageDescription }],
+      ['meta', { property: 'og:title', content: title }],
+      ['meta', { property: 'og:description', content: pageDescription }],
+      ['meta', { property: 'og:type', content: pageType }],
+      ['meta', { property: 'og:image', content: socialImage }],
+      ['meta', { name: 'twitter:title', content: title }],
+      ['meta', { name: 'twitter:description', content: pageDescription }],
+      ['meta', { name: 'twitter:image', content: socialImage }]
+    ]
+
+    if (canonicalUrl) {
+      seoHead.push(['link', { rel: 'canonical', href: canonicalUrl }])
+      seoHead.push(['meta', { property: 'og:url', content: canonicalUrl }])
+      seoHead.push(['meta', { name: 'twitter:url', content: canonicalUrl }])
+    }
+
+    if (publishedTime) {
+      seoHead.push(['meta', { property: 'article:published_time', content: publishedTime }])
+    }
+
+    if (modifiedTime) {
+      seoHead.push(['meta', { property: 'article:modified_time', content: modifiedTime }])
+    }
+
+    if (isNoindex) {
+      seoHead.push(['meta', { name: 'robots', content: 'noindex, nofollow' }])
+      seoHead.push(['meta', { name: 'googlebot', content: 'noindex, nofollow' }])
+    }
+
+    return seoHead
+  },
   themeConfig: {
     logo: '/logo.png',
     search: {
