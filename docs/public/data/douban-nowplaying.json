@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-11T06:10:44.285Z",
+  "updatedAt": "2026-05-13T09:42:45.142Z",
   "source": "https://movie.douban.com/",
   "fallback": false,
   "message": "",
@@ -15,13 +15,13 @@
       "cover": "/data/douban-nowplaying/movie-2.jpg"
     },
     {
-      "title": "真人快打2",
-      "href": "https://movie.douban.com/subject/35754057/?from=showing",
+      "title": "再见，朱莉娅",
+      "href": "https://movie.douban.com/subject/36070920/?from=showing",
       "cover": "/data/douban-nowplaying/movie-3.jpg"
     },
     {
-      "title": "寒战1994",
-      "href": "https://movie.douban.com/subject/36857924/?from=showing",
+      "title": "真人快打2",
+      "href": "https://movie.douban.com/subject/35754057/?from=showing",
       "cover": "/data/douban-nowplaying/movie-4.jpg"
     },
     {

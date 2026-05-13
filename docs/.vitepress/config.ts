@@ -1,3 +1,5 @@
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { loadEnv } from 'vite'
 import { defineConfig } from 'vitepress'
 import type { HeadConfig } from 'vitepress'
@@ -6,9 +8,9 @@ import { nav } from './configs'
 const SITE_NAME = 'wing的小盒子'
 const SITE_DESCRIPTION = '记录前端成长、源码阅读、效率工具与生活观察'
 const DEFAULT_SOCIAL_IMAGE = '/logo.png'
-const envDir = decodeURIComponent(
-  new URL('../../', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')
-)
+const currentFile = fileURLToPath(import.meta.url)
+const currentDir = dirname(currentFile)
+const envDir = resolve(currentDir, '../..')
 const env = loadEnv('', envDir, '')
 const umamiScriptUrl = env.UMAMI_SCRIPT_URL || 'https://cloud.umami.is/script.js'
 const umamiWebsiteId = env.UMAMI_WEBSITE_ID
@@ -260,7 +262,7 @@ export default defineConfig({
             { text: '浏览器设置与扩展', link: '/efficiency/software/browser' },
             { text: 'Visual Studio Code 配置', link: '/efficiency/software/vscode' },
             { text: '在线工具', link: '/efficiency/online-tools' },
-            { text: '书签脚本', link: '/efficiency/bookmark-scripts' }
+            { text: 'AI 工具', link: '/efficiency/bookmark-scripts' }
           ]
         }
       ]
